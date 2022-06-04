@@ -55,7 +55,7 @@ public class OwnedVehicleController {
         }
     }
 
-    public void delete(int amount) {
+    public void delete() {
         ConnectionHelper connectionHelper = new ConnectionHelper();
         try {
             connectionHelper.deleteOwnedVehicles();
