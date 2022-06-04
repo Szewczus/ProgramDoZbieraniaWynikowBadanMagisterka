@@ -62,6 +62,5 @@ public class OwnedVehicleController {
         } catch (IOException e) {
             e.printStackTrace();
         }
-
     }
 }
