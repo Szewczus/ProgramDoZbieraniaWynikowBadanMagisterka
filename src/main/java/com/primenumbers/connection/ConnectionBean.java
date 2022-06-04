@@ -67,11 +67,33 @@ public class ConnectionBean {
         return readData(br);
     }
 
+    private String deleteData(String postfix) throws IOException {
+        HttpURLConnection connection = openConnection(postfix);
+        sendData(connection, null);    //if input is either null of empty no data will be send to the backend
+        if (connection.getResponseCode() != 200) {
+            throw new RuntimeException("Failed : HTTP error code : "
+                    + connection.getResponseCode());
+        }
+        return "deleted";
+    }
+
     private HttpURLConnection openConnection(String postfix) throws IOException {
         URL address = new URL(serverAddress + postfix);
         HttpURLConnection conn = (HttpURLConnection) address.openConnection();
         conn.setDoOutput(true);
         conn.setRequestMethod("POST");          //somehow android runtime sends all requests as POSTs even when request method is set to GET
+        conn.setRequestProperty("Content-Type", "application/json");
+        if(authHeader != null && !authHeader.isEmpty()){
+            conn.setRequestProperty("Authorization", authHeader);
+        }
+        return conn;
+    }
+
+    private HttpURLConnection openConnectionDelete(String postfix) throws IOException {
+        URL address = new URL(serverAddress + postfix);
+        HttpURLConnection conn = (HttpURLConnection) address.openConnection();
+        conn.setDoOutput(true);
+        conn.setRequestMethod("DELETE");          //somehow android runtime sends all requests as POSTs even when request method is set to GET
         conn.setRequestProperty("Content-Type", "application/json");
         if(authHeader != null && !authHeader.isEmpty()){
             conn.setRequestProperty("Authorization", authHeader);
@@ -95,6 +117,7 @@ public class ConnectionBean {
         }
         return conn;
     }
+
 
     private String readData(BufferedReader br) throws IOException {
         String output;

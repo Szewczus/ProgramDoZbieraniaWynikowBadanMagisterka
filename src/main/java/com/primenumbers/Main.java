@@ -37,12 +37,10 @@ public class Main {
 
     void ownedVehicle100(){
         OwnedVehicleController ownedVehicleController = new OwnedVehicleController();
-        System.out.println();
-        try {
-            ownedVehicleController.save(100);
-        } catch (Exception e) {
-            throw new RuntimeException(e);
-        }
+        System.out.println("Save OwnedVehicle 100 Times: ");
+        ownedVehicleController.save(100);
+
+
     }
 
 
