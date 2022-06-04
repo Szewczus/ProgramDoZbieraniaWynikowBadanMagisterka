@@ -24,7 +24,7 @@ public class ColourController {
         return lista;
     }
 
-    void save() throws Exception {
+    public void save() throws Exception {
         ConnectionHelper connectionHelper = new ConnectionHelper();
         try {
             connectionHelper.saveColours(generate());

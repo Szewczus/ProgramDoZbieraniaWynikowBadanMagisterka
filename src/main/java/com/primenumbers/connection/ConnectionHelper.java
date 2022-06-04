@@ -59,8 +59,4 @@ public class ConnectionHelper {
     public void saveOwnedVehicles(List<OwnedVehicleDto> ownedVehicleDtos) throws IOException {
         connectionBean.postObjects(ownedVehicleDtos, "/ownedvehicles/saveOwnedVehicles");
     }
-
-
-
-
 }

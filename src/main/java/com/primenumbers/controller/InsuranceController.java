@@ -11,7 +11,7 @@ import java.util.List;
 
 public class InsuranceController {
 
-    private void saveInsurances(){
+    public void saveInsurances(){
         ConnectionHelper connectionHelper = new ConnectionHelper();
         try {
             connectionHelper.saveInsurances(generateDefinedAmountInsurances(100));
