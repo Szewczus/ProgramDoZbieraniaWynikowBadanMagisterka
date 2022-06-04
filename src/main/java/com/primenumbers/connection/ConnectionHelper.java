@@ -31,37 +31,30 @@ public class ConnectionHelper {
 
 
     public void saveInsurances(List<InsuranceDto> insurances) throws IOException {
-        System.out.println("saveInsurances");
         connectionBean.postObjects(insurances, "/insurance/saveInsurances");
     }
 
     public void saveOwners(List<OwnerDto> ownerDtos) throws IOException {
-        System.out.println("saveOwners");
         connectionBean.postObjects(ownerDtos, "/owners/saveOwners");
     }
 
     public void saveAddresses(List<AddressDto> addressDtos) throws IOException {
-        System.out.println("saveAddresses");
         connectionBean.postObjects(addressDtos, "/address/saveAdresses");
     }
 
     public void saveBodyStyles(List<BodyStyleDto> bodyStyleDtos) throws IOException {
-        System.out.println("saveBodyStyles");
         connectionBean.postObjects(bodyStyleDtos, "/bodystyle/saveBodyStyles");
     }
 
     public void saveVehicles(List<VehicleDto> vehicleDtos) throws IOException{
-        System.out.println("saveVehicles");
         connectionBean.postObjects(vehicleDtos, "/vehicles/saveVehicles");
     }
 
     public void saveColours(List<ColourDto> colourDtos) throws IOException {
-        System.out.println("saveColours");
         connectionBean.postObjects(colourDtos, "/colour/saveColours");
     }
 
     public void saveInsuranceTypes(List<InsuranceTypeDto> insuranceTypeDtos) throws IOException {
-        System.out.println("saveInsuranceTypes");
         connectionBean.postObjects(insuranceTypeDtos, "/insurancetype/saveInsurances");
     }
 
@@ -77,18 +70,15 @@ public class ConnectionHelper {
         connectionBean.deleteObjects("/ownedvehicles/deleteAll");
     }
 
-    public void updateInsurances(int amount) throws IOException{
-        LocalDate date = LocalDate.parse("2010-01-01");
-        List<Long> times = new ArrayList<>();
-        LocalDate nextDate = date;
+    public void updateInsurances(int amount, LocalDate nextDate) throws IOException{
+        Date startDate = Date.valueOf(nextDate);
+        Date expirationDate = Date.valueOf(nextDate.plusDays(1));
+        InsuranceDto insuranceDto = InsuranceDto.builder().id(1L).startDate(startDate).expiration(expirationDate).fkOwnedVehicleId(1L).fkTypeId(1L).build();
+        connectionBean.postObject(insuranceDto, "/insurance/updateInsurance/1/"+ amount);
+    }
 
-        for(int i=0; i<50; i++){
-            nextDate = nextDate.plusDays(1);
-            Date startDate = Date.valueOf(nextDate);
-            Date expirationDate = Date.valueOf(nextDate.plusDays(1));
-            InsuranceDto insuranceDto = InsuranceDto.builder().id(1L).startDate(startDate).expiration(expirationDate).fkOwnedVehicleId(1L).fkTypeId(1L).build();
-            connectionBean.postObject(insuranceDto, "/insurance/updateInsurance/1/"+ amount);
-        }
+    public void deleteAll() throws IOException{
+        connectionBean.deleteObjects("/insurance/deleteAllInsurances");
     }
 
 }

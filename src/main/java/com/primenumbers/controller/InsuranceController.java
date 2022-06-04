@@ -22,15 +22,26 @@ public class InsuranceController {
         }
     }
 
-    private void update(int amount){
+    public void update(int amount, LocalDate nextDate){
         ConnectionHelper connectionHelper = new ConnectionHelper();
         try{
-            connectionHelper.updateInsurances(amount);
+            connectionHelper.updateInsurances(amount, nextDate);
         }
         catch (Exception e){
             log.error(e.getMessage());
         }
     }
+
+    public void deleteAll(){
+        ConnectionHelper connectionHelper = new ConnectionHelper();
+        try{
+            connectionHelper.deleteAll();
+        }
+        catch (Exception e){
+            log.error(e.getMessage());
+        }
+    }
+
 
     private List<InsuranceDto> generateDefinedAmountInsurances(int amount) {
         List<InsuranceDto> dtos = new ArrayList<>();
