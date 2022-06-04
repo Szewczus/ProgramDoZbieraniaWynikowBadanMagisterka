@@ -1,5 +1,7 @@
 package com.primenumbers.connection;
 
+import com.fasterxml.jackson.annotation.JsonAutoDetect;
+import com.fasterxml.jackson.annotation.PropertyAccessor;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 import java.io.BufferedReader;
@@ -43,6 +45,7 @@ public class ConnectionBean {
      * @throws IOException - can throw exceptions
      */
     public <T> String postObjects(List<T> objectList, String postfix) throws IOException {
+        objectMapper.setVisibility(PropertyAccessor.FIELD, JsonAutoDetect.Visibility.ANY);
         String input = objectMapper.writeValueAsString(objectList);
         return postData(input, postfix);
     }
