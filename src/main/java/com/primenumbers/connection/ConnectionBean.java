@@ -72,7 +72,7 @@ public class ConnectionBean {
     }
 
     private String deleteData(String postfix) throws IOException {
-        HttpURLConnection connection = openConnection(postfix);
+        HttpURLConnection connection = openConnectionDelete(postfix);
         sendData(connection, null);    //if input is either null of empty no data will be send to the backend
         if (connection.getResponseCode() != 200) {
             throw new RuntimeException("Failed : HTTP error code : "

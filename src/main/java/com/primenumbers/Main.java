@@ -9,6 +9,7 @@ import com.primenumbers.dto.InsuranceDto;
 import com.primenumbers.dto.VehicleDto;
 
 import com.primenumbers.controller.*;
+import com.primenumbers.invokers.OwnedVehicleInvoker;
 
 public class Main {
 
@@ -32,14 +33,18 @@ public class Main {
         ownedVehicleController.save(100);
         insuranceController.save(100);
 
+        Main main = new Main();
+        main.ownedVehicles();
+
     }
 
 
-    void ownedVehicle100(){
-        OwnedVehicleController ownedVehicleController = new OwnedVehicleController();
-        System.out.println("Save OwnedVehicle 100 Times: ");
-        ownedVehicleController.save(100);
-
+    public void ownedVehicles(){
+        System.out.println("--------------");
+        OwnedVehicleInvoker ownedVehicleInvoker = new OwnedVehicleInvoker();
+        ownedVehicleInvoker.saveOwnedVehicles100();
+        //ownedVehicleInvoker.saveOwnedVehicles1000();
+        //ownedVehicleInvoker.saveOwnedVehicles10000();
 
     }
 
