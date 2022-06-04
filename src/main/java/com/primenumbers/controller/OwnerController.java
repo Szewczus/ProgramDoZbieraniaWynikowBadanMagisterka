@@ -10,7 +10,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class OwnerController {
-    private List<OwnerDto> generateOwners() {
+    private List<OwnerDto> generate() {
         List<OwnerDto> dtos = new ArrayList<>();
         dtos.add(OwnerDto.builder().id(1L).name("Feliks").surname("Olszewski").birthdate(Date.valueOf("1948-02-16")).pesel(48021667475L).build());
         dtos.add(OwnerDto.builder().id(2L).name("Benedykt").surname("Sawicki").birthdate(Date.valueOf("1993-05-25")).pesel(93052577435L).build());
@@ -26,19 +26,13 @@ public class OwnerController {
         return dtos;
     }
 
-    void saveOwners() throws Exception {
-        String json = new ObjectMapper().writeValueAsString(generateOwners());
-
-        long start = System.nanoTime();
+    void save() throws Exception {
         ConnectionHelper connectionHelper = new ConnectionHelper();
         try {
-            connectionHelper.saveOwners(generateOwners());
+            connectionHelper.saveOwners(generate());
         } catch (IOException e) {
             e.printStackTrace();
         }
-        long end = System.nanoTime();
-        System.out.println("Elapsed Time in nano seconds: " + (end - start));
     }
-    
     
 }

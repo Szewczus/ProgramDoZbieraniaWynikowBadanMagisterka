@@ -2,6 +2,8 @@ package com.primenumbers.connection;
 
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.primenumbers.dto.AddressDto;
+import com.primenumbers.dto.BodyStyleDto;
 import com.primenumbers.dto.InsuranceDto;
 import com.primenumbers.dto.OwnerDto;
 import com.primenumbers.entity.Insurance;
@@ -12,6 +14,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
+import java.util.zip.InflaterOutputStream;
 
 public class ConnectionHelper {
     private final ObjectMapper objectMapper;
@@ -30,6 +33,16 @@ public class ConnectionHelper {
     public void saveOwners(List<OwnerDto> ownerDtos) throws IOException {
         connectionBean.postObjects(ownerDtos, "/owners/saveOwners");
     }
+
+    public void saveAddresses(List<AddressDto> addressDtos) throws IOException {
+        connectionBean.postObjects(addressDtos, "/address/saveAdresses");
+    }
+
+    public void saveBodyStyles(List<BodyStyleDto> bodyStyleDtos) throws IOException {
+        connectionBean.postObjects(bodyStyleDtos, "/bodystyle/saveBodyStyles");
+    }
+
+
 
 
 }
