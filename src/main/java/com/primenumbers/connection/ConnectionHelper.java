@@ -39,27 +39,32 @@ public class ConnectionHelper {
     }
 
     public void saveAddresses(List<AddressDto> addressDtos) throws IOException {
-
+        System.out.println("saveAddresses");
         connectionBean.postObjects(addressDtos, "/address/saveAdresses");
     }
 
     public void saveBodyStyles(List<BodyStyleDto> bodyStyleDtos) throws IOException {
+        System.out.println("saveBodyStyles");
         connectionBean.postObjects(bodyStyleDtos, "/bodystyle/saveBodyStyles");
     }
 
     public void saveVehicles(List<VehicleDto> vehicleDtos) throws IOException{
-        connectionBean.postObjects(vehicleDtos, "vehicle/saveVehicles");
+        System.out.println("saveVehicles");
+        connectionBean.postObjects(vehicleDtos, "/vehicles/saveVehicles");
     }
 
     public void saveColours(List<ColourDto> colourDtos) throws IOException {
+        System.out.println("saveColours");
         connectionBean.postObjects(colourDtos, "/colour/saveColours");
     }
 
     public void saveInsuranceTypes(List<InsuranceTypeDto> insuranceTypeDtos) throws IOException {
+        System.out.println("saveInsuranceTypes");
         connectionBean.postObjects(insuranceTypeDtos, "/insurancetype/saveInsurances");
     }
 
     public void saveOwnedVehicles(List<OwnedVehicleDto> ownedVehicleDtos) throws IOException {
+        System.out.println("saveOwnedVehicles");
         connectionBean.postObjects(ownedVehicleDtos, "/ownedvehicles/saveOwnedVehicles");
     }
 }

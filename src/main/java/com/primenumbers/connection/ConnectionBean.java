@@ -44,24 +44,26 @@ public class ConnectionBean {
      */
     public <T> String postObjects(List<T> objectList, String postfix) throws IOException {
         String input = objectMapper.writeValueAsString(objectList);
-        return postData(input, postfix);
+        long start = System.currentTimeMillis();
+        String postData = postData(input, postfix);
+        long end = System.currentTimeMillis();
+        long result = end-start;
+        System.out.println(String.valueOf(result));
+        return postData;
     }
 
 
 
     private String postData(String input, String postfix) throws IOException {
         HttpURLConnection connection = openConnection(postfix);
-        long start = System.currentTimeMillis();
         sendData(connection, input);    //if input is either null of empty no data will be send to the backend
-        long end = System.currentTimeMillis();
-        long result = end-start;
-        System.out.println(String.valueOf(result));
         if (connection.getResponseCode() != 200) {
             throw new RuntimeException("Failed : HTTP error code : "
                     + connection.getResponseCode());
         }
         BufferedReader br = new BufferedReader(new InputStreamReader(
                 (connection.getInputStream())));
+
         return readData(br);
     }
 
