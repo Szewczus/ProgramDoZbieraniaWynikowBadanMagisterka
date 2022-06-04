@@ -1,7 +1,9 @@
 package com.primenumbers.controller;
 
+import com.primenumbers.connection.ConnectionHelper;
 import com.primenumbers.dto.ColourDto;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -22,5 +24,13 @@ public class ColourController {
         return lista;
     }
 
+    void save() throws Exception {
+        ConnectionHelper connectionHelper = new ConnectionHelper();
+        try {
+            connectionHelper.saveColours(generate());
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
 
 }

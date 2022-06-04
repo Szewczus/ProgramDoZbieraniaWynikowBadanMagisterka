@@ -34,5 +34,4 @@ public class OwnerController {
             e.printStackTrace();
         }
     }
-    
 }
