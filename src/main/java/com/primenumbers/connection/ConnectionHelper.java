@@ -12,6 +12,8 @@ import com.primenumbers.entity.Insurance;
 import com.primenumbers.entity.Owner;
 
 import java.io.IOException;
+import java.sql.Date;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
@@ -75,4 +77,19 @@ public class ConnectionHelper {
     public void deleteOwnedVehicles() throws IOException {
         connectionBean.deleteObjects("/ownedvehicles/deleteAll");
     }
+
+    public void updateInsurances(int amount) throws IOException{
+        LocalDate date = LocalDate.parse("2010-01-01");
+        List<Long> times = new ArrayList<>();
+        LocalDate nextDate = date;
+
+        for(int i=0; i<50; i++){
+            nextDate = nextDate.plusDays(1);
+            Date startDate = Date.valueOf(nextDate);
+            Date expirationDate = Date.valueOf(nextDate.plusDays(1));
+            InsuranceDto insuranceDto = InsuranceDto.builder().id(1L).startDate(startDate).expiration(expirationDate).fkOwnedVehicleId(1L).fkTypeId(1L).build();
+            connectionBean.postObject(insuranceDto, "/insurance/updateInsurance/1/"+ amount);
+        }
+    }
+
 }

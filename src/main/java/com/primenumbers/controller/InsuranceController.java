@@ -2,6 +2,8 @@ package com.primenumbers.controller;
 
 import com.primenumbers.connection.ConnectionHelper;
 import com.primenumbers.dto.InsuranceDto;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.io.IOException;
 import java.sql.Date;
@@ -10,13 +12,23 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class InsuranceController {
-
+    private Logger log = LoggerFactory.getLogger(InsuranceController.class);
     public void save(int amount){
         ConnectionHelper connectionHelper = new ConnectionHelper();
         try {
             connectionHelper.saveInsurances(generateDefinedAmountInsurances(amount));
         } catch (IOException e) {
-            e.printStackTrace();
+            log.error(e.getMessage());
+        }
+    }
+
+    private void update(int amount){
+        ConnectionHelper connectionHelper = new ConnectionHelper();
+        try{
+            connectionHelper.updateInsurances(amount);
+        }
+        catch (Exception e){
+            log.error(e.getMessage());
         }
     }
 
