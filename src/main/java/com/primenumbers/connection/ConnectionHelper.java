@@ -71,4 +71,8 @@ public class ConnectionHelper {
     public void updateOwnedVehicles(int amount) throws IOException {
         connectionBean.postObject(null, "/ownedvehicles/updateOwnedVehicles/11/11/1/" + amount);
     }
+
+    public void deleteOwnedVehicles() throws IOException {
+        connectionBean.deleteObjects("/ownedvehicles/deleteAll");
+    }
 }
