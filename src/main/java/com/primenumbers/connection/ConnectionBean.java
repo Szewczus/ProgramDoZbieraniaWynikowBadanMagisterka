@@ -44,12 +44,7 @@ public class ConnectionBean {
      */
     public <T> String postObjects(List<T> objectList, String postfix) throws IOException {
         String input = objectMapper.writeValueAsString(objectList);
-        long start = System.currentTimeMillis();
-        String postData = postData(input, postfix);
-        long end = System.currentTimeMillis();
-        long result = end-start;
-        System.out.println(String.valueOf(result));
-        return postData;
+        return postData(input, postfix);
     }
 
     public String deleteObjects(String postfix) throws IOException {
