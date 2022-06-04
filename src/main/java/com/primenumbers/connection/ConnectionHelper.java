@@ -70,6 +70,10 @@ public class ConnectionHelper {
         connectionBean.deleteObjects("/ownedvehicles/deleteAll");
     }
 
+    public String findAllOwnedVehicles() throws IOException{
+        return connectionBean.getData("/ownedvehicles/get");
+    }
+
     public void updateInsurances(int amount, LocalDate nextDate) throws IOException{
         Date startDate = Date.valueOf(nextDate);
         Date expirationDate = Date.valueOf(nextDate.plusDays(1));
@@ -79,6 +83,10 @@ public class ConnectionHelper {
 
     public void deleteAll() throws IOException{
         connectionBean.deleteObjects("/insurance/deleteAllInsurances");
+    }
+
+    public String findAll() throws IOException{
+        return connectionBean.getData("/insurance/get");
     }
 
 }

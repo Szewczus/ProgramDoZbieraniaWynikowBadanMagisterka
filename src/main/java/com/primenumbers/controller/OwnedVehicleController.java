@@ -63,4 +63,15 @@ public class OwnedVehicleController {
             e.printStackTrace();
         }
     }
+
+    public String findAll() {
+        ConnectionHelper connectionHelper = new ConnectionHelper();
+        try {
+            return connectionHelper.findAllOwnedVehicles();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
 }

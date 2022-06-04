@@ -42,6 +42,17 @@ public class InsuranceController {
         }
     }
 
+    public String findAll(){
+        ConnectionHelper connectionHelper= new ConnectionHelper();
+        try {
+            return connectionHelper.findAll();
+        }
+        catch (Exception e){
+            log.error(e.getMessage());
+        }
+        return null;
+    }
+
 
     private List<InsuranceDto> generateDefinedAmountInsurances(int amount) {
         List<InsuranceDto> dtos = new ArrayList<>();
@@ -54,4 +65,6 @@ public class InsuranceController {
         }
         return dtos;
     }
+
+
 }
