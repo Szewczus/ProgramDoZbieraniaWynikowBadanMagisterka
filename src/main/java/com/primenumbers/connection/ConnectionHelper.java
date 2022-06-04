@@ -3,7 +3,9 @@ package com.primenumbers.connection;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.primenumbers.dto.InsuranceDto;
+import com.primenumbers.dto.OwnerDto;
 import com.primenumbers.entity.Insurance;
+import com.primenumbers.entity.Owner;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -23,6 +25,10 @@ public class ConnectionHelper {
 
     public void saveInsurances(List<InsuranceDto> insurances) throws IOException {
         connectionBean.postObjects(insurances, "/insurance/saveInsurances");
+    }
+
+    public void saveOwners(List<OwnerDto> ownerDtos) throws IOException {
+        connectionBean.postObjects(ownerDtos, "/owners/saveOwners");
     }
 
 
