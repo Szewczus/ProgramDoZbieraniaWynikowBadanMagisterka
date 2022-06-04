@@ -32,12 +32,12 @@ public class OwnerController {
         long start = System.nanoTime();
         ConnectionHelper connectionHelper = new ConnectionHelper();
         try {
-            connectionHelper.saveInsurances(generateOwners());
+            connectionHelper.saveOwners(generateOwners());
         } catch (IOException e) {
             e.printStackTrace();
         }
+        long end = System.nanoTime();
         System.out.println("Elapsed Time in nano seconds: " + (end - start));
-        assertEquals(mvcResult.getResponse().getStatus(), 200);
     }
     
     
