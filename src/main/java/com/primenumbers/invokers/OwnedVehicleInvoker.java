@@ -27,7 +27,7 @@ public class OwnedVehicleInvoker {
         OwnedVehicleController ownedVehicleController = new OwnedVehicleController();
         ownedVehicleController.delete(); //by najpierw wyczyscic tabelę
 
-        System.out.println("Save OwnedVehicle " + amount +" Times: ");
+        System.out.println("Save OwnedVehicle " + amount +" Records: ");
         List<Long> savingTimes = new ArrayList<>();
         List<Long> updateTimes = new ArrayList<>();
         List<Long> deletingTimes = new ArrayList<>();
@@ -52,7 +52,7 @@ public class OwnedVehicleInvoker {
             System.out.println((i+1) + ": save: " + (saveEnd-saveStart) + ", update: " + (updateEnd-updateStart) + ", delete: " + (deleteEnd-deleteStart));
         }
 
-        System.out.println("Save OwnedVehicle " + amount +" Times: ");
+        System.out.println("Save OwnedVehicle " + amount +" Records: ");
         System.out.println("SaveTimes: ");
         for(long time : savingTimes) {
             System.out.println(time);
