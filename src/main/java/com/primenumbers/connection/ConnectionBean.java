@@ -55,7 +55,7 @@ public class ConnectionBean {
         sendData(connection, input);    //if input is either null of empty no data will be send to the backend
         long end = System.currentTimeMillis();
         long result = end-start;
-        System.out.println(result);
+        System.out.println(String.valueOf(result));
         if (connection.getResponseCode() != 200) {
             throw new RuntimeException("Failed : HTTP error code : "
                     + connection.getResponseCode());

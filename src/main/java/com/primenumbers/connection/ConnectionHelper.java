@@ -3,6 +3,11 @@ package com.primenumbers.connection;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.primenumbers.dto.*;
+import com.primenumbers.dto.AddressDto;
+import com.primenumbers.dto.BodyStyleDto;
+import com.primenumbers.dto.InsuranceDto;
+import com.primenumbers.dto.OwnerDto;
+import com.primenumbers.dto.VehicleDto;
 import com.primenumbers.entity.Insurance;
 import com.primenumbers.entity.Owner;
 
@@ -37,6 +42,10 @@ public class ConnectionHelper {
 
     public void saveBodyStyles(List<BodyStyleDto> bodyStyleDtos) throws IOException {
         connectionBean.postObjects(bodyStyleDtos, "/bodystyle/saveBodyStyles");
+    }
+
+    public void saveVehicles(List<VehicleDto> vehicleDtos) throws IOException{
+        connectionBean.postObjects(vehicleDtos, "vehicle/saveVehicles");
     }
 
     public void saveColours(List<ColourDto> colourDtos) throws IOException {
