@@ -1,6 +1,5 @@
 package com.primenumbers.connection;
 
-import com.fasterxml.jackson.annotation.PropertyAccessor;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 import java.io.BufferedReader;
