@@ -23,8 +23,8 @@ public class ConnectionHelper {
     }
 
 
-    public void saveInsurances(List<InsuranceDto> insurances) throws IOException {
-        connectionBean.postObjects(insurances, "/insurance/saveInsurances");
+    public void saveInsurances(List<InsuranceDto> insurances, String title) throws IOException {
+        connectionBean.postObjects(insurances, "/insurance/saveInsurances", title);
     }
 
     public void saveOwners(List<OwnerDto> ownerDtos) throws IOException {

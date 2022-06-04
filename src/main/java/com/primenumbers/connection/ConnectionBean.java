@@ -1,6 +1,5 @@
 package com.primenumbers.connection;
 
-
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 import java.io.BufferedReader;
@@ -31,9 +30,9 @@ public class ConnectionBean {
      * @return returns json that has to mapped to an object or object array
      * @throws IOException - can throw exceptions
      */
-    public String postObject(Object object, String postfix) throws IOException {
+    public String postObject(Object object, String postfix, String title) throws IOException {
         String input = objectMapper.writeValueAsString(object);
-        return postData(input, postfix);
+        return postData(input, postfix, title);
     }
 
     /**
@@ -43,19 +42,20 @@ public class ConnectionBean {
      * @return  returns json that has to mapped to an object or object array
      * @throws IOException - can throw exceptions
      */
-    public <T> String postObjects(List<T> objectList, String postfix) throws IOException {
+    public <T> String postObjects(List<T> objectList, String postfix, String title) throws IOException {
         String input = objectMapper.writeValueAsString(objectList);
-        return postData(input, postfix);
+        return postData(input, postfix, title);
     }
 
 
 
-    private String postData(String input, String postfix) throws IOException {
+    private String postData(String input, String postfix, String title) throws IOException {
         HttpURLConnection connection = openConnection(postfix);
-
-
+        long start = System.currentTimeMillis();
         sendData(connection, input);    //if input is either null of empty no data will be send to the backend
-
+        long end = System.currentTimeMillis();
+        long result = end-start;
+        System.out.println(title+": "+result);
         if (connection.getResponseCode() != 200) {
             throw new RuntimeException("Failed : HTTP error code : "
                     + connection.getResponseCode());
