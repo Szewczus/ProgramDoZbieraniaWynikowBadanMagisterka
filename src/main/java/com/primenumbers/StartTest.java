@@ -13,7 +13,7 @@ public class StartTest {
     public StartTest() {
         ConnectionHelper connectionHelper = new ConnectionHelper();
         try {
-            connectionHelper.saveInsurances(generate());
+            connectionHelper.saveInsurances(generate(), "SaveInsurances");
         } catch (IOException e) {
             e.printStackTrace();
         }
