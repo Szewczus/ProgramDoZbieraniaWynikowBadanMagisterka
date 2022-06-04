@@ -67,4 +67,8 @@ public class ConnectionHelper {
         System.out.println("saveOwnedVehicles");
         connectionBean.postObjects(ownedVehicleDtos, "/ownedvehicles/saveOwnedVehicles");
     }
+
+    public void updateOwnedVehicles(int amount) throws IOException {
+        connectionBean.postObject(null, "/ownedvehicles/updateOwnedVehicles/11/11/1/" + amount);
+    }
 }
