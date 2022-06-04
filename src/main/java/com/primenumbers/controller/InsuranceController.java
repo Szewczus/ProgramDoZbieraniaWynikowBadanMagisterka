@@ -11,10 +11,10 @@ import java.util.List;
 
 public class InsuranceController {
 
-    public void saveInsurances(){
+    public void save(int amount){
         ConnectionHelper connectionHelper = new ConnectionHelper();
         try {
-            connectionHelper.saveInsurances(generateDefinedAmountInsurances(100));
+            connectionHelper.saveInsurances(generateDefinedAmountInsurances(amount));
         } catch (IOException e) {
             e.printStackTrace();
         }

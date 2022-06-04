@@ -8,14 +8,29 @@ import com.primenumbers.controller.VehicleController;
 import com.primenumbers.dto.InsuranceDto;
 import com.primenumbers.dto.VehicleDto;
 
-import java.sql.Date;
-import java.util.ArrayList;
-import java.util.List;
+import com.primenumbers.controller.*;
 
 public class Main {
 
     public static void main(String[] args) {
+        VehicleController vehicleController = new VehicleController();
+        ColourController colourController = new ColourController();
+        BodyStyleController bodyStyleController = new BodyStyleController();
+        InsuranceTypeController insuranceTypeController = new InsuranceTypeController();
+        OwnerController ownerController = new OwnerController();
+        AddressController addressController = new AddressController();
+        OwnedVehicleController ownedVehicleController = new OwnedVehicleController();
+        InsuranceController insuranceController = new InsuranceController();
 
+
+        vehicleController.save();
+        colourController.save();
+        bodyStyleController.save();
+        insuranceTypeController.save();
+        ownerController.save();
+        addressController.save();
+        ownedVehicleController.save(100);
+        insuranceController.save(100);
 
     }
 

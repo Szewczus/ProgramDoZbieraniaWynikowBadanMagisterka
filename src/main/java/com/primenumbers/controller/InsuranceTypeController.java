@@ -23,7 +23,7 @@ public class InsuranceTypeController {
         return insuranceTypeDtos;
     }
 
-    public void save() throws Exception {
+    public void save() {
         ConnectionHelper connectionHelper = new ConnectionHelper();
         try {
             connectionHelper.saveInsuranceTypes(generate());

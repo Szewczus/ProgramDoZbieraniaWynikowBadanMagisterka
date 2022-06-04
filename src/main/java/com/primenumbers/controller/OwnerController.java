@@ -26,7 +26,7 @@ public class OwnerController {
         return dtos;
     }
 
-    public void save() throws Exception {
+    public void save() {
         ConnectionHelper connectionHelper = new ConnectionHelper();
         try {
             connectionHelper.saveOwners(generate());

@@ -29,14 +29,17 @@ public class ConnectionHelper {
 
 
     public void saveInsurances(List<InsuranceDto> insurances) throws IOException {
+        System.out.println("saveInsurances");
         connectionBean.postObjects(insurances, "/insurance/saveInsurances");
     }
 
     public void saveOwners(List<OwnerDto> ownerDtos) throws IOException {
+        System.out.println("saveOwners");
         connectionBean.postObjects(ownerDtos, "/owners/saveOwners");
     }
 
     public void saveAddresses(List<AddressDto> addressDtos) throws IOException {
+
         connectionBean.postObjects(addressDtos, "/address/saveAdresses");
     }
 

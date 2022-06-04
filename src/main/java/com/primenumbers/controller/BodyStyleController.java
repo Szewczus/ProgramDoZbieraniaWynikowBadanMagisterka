@@ -26,7 +26,7 @@ public class BodyStyleController {
         return bodyStyleDtos;
     }
 
-    public void save() throws Exception {
+    public void save() {
         ConnectionHelper connectionHelper = new ConnectionHelper();
         try {
             connectionHelper.saveBodyStyles(generate());

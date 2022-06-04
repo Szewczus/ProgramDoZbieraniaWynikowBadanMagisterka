@@ -37,7 +37,7 @@ public class OwnedVehicleController {
         return dtos;
     }
 
-    public void save(int amount) throws Exception {
+    public void save(int amount){
         ConnectionHelper connectionHelper = new ConnectionHelper();
         try {
             connectionHelper.saveOwnedVehicles(generateDefinedAmount(amount));
