@@ -48,11 +48,7 @@ public class ConnectionBean {
     }
 
     public String deleteObjects(String postfix) throws IOException {
-        long start = System.currentTimeMillis();
         String deleteData = deleteData(postfix);
-        long end = System.currentTimeMillis();
-        long result = end-start;
-        System.out.println(result);
         return deleteData;
     }
 

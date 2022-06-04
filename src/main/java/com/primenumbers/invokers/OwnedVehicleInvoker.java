@@ -48,8 +48,11 @@ public class OwnedVehicleInvoker {
             ownedVehicleController.delete();
             long deleteEnd = System.currentTimeMillis();
             deletingTimes.add(deleteEnd-deleteStart);
+
+            System.out.println((i+1) + ": save: " + (saveEnd-saveStart) + ", update: " + (updateEnd-updateStart) + ", delete: " + (deleteEnd-deleteStart));
         }
 
+        System.out.println("Save OwnedVehicle " + amount +" Times: ");
         System.out.println("SaveTimes: ");
         for(long time : savingTimes) {
             System.out.println(time);
