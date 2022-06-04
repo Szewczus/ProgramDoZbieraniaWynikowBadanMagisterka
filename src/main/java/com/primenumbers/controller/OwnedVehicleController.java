@@ -45,4 +45,15 @@ public class OwnedVehicleController {
             e.printStackTrace();
         }
     }
+
+    public void update(int amount) {
+        ConnectionHelper connectionHelper = new ConnectionHelper();
+        try {
+            connectionHelper.updateOwnedVehicles(amount);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void delete(int amount) {}
 }
