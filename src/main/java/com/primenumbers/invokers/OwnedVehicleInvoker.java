@@ -2,6 +2,7 @@ package com.primenumbers.invokers;
 
 import com.primenumbers.controller.OwnedVehicleController;
 
+import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -58,25 +59,44 @@ public class OwnedVehicleInvoker {
             System.out.println((i+1) + ": save: " + (saveEnd-saveStart) +", get: " +(getEnd-getStart)+", update: " + (updateEnd-updateStart) + ", delete: " + (deleteEnd-deleteStart));
         }
 
-        System.out.println("Save OwnedVehicle " + amount +" Records: ");
-        System.out.println("SaveTimes: ");
-        for(long time : savingTimes) {
-            System.out.println(time);
-        }
+        //write to file
+        String filename = "results_for_" + amount + "_owned_vehicles.txt";
 
-        System.out.println("GetTimes: ");
-        for(long time : getTimes) {
-            System.out.println(time);
-        }
 
-        System.out.println("UpdateTimess: ");
-        for(long time : updateTimes) {
-            System.out.println(time);
-        }
-        System.out.println("DeleteTimes: ");
-        for(long time : deletingTimes) {
-            System.out.println(time);
-        }
 
+        try{
+            PrintWriter writer = new PrintWriter(filename, "UTF-8");
+            System.out.println("OwnedVehicle " + amount +" Records: ");
+            writer.println("OwnedVehicle " + amount +" Records: " );
+            System.out.println("SaveTimes: ");
+            writer.println("SaveTimes: ");
+            for(long time : savingTimes) {
+                System.out.println(time);
+                writer.println(time);
+            }
+
+            System.out.println("GetTimes: ");
+            writer.println("GetTimes: ");
+            for(long time : getTimes) {
+                System.out.println(time);
+                writer.println(time);
+            }
+
+            System.out.println("UpdateTimess: ");
+            writer.println("UpdateTimes: ");
+            for(long time : updateTimes) {
+                System.out.println(time);
+                writer.println(time);
+            }
+            System.out.println("DeleteTimes: ");
+            writer.println("DeleteTimes");
+            for(long time : deletingTimes) {
+                System.out.println(time);
+                writer.println(time);
+            }
+            writer.close();
+        } catch (Exception e){
+            throw new RuntimeException(e);
+        }
     }
 }

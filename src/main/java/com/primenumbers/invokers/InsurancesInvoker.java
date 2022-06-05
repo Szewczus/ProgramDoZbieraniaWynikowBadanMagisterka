@@ -2,6 +2,10 @@ package com.primenumbers.invokers;
 
 import com.primenumbers.controller.InsuranceController;
 
+import java.io.BufferedWriter;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.PrintWriter;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
@@ -48,24 +52,42 @@ public class InsurancesInvoker {
 
             System.out.println((i+1) + " Insurance "+ amount+" record - save: " + resultSave +" get: "+ resultGet+", update: " + resultUpdate + ", delete: " + resultDelete);
         }
-        System.out.println("SAVING INSURANCE "+ amount +" RECORDS: ");
-        for (long timeSave: savingTimes){
-            System.out.println(timeSave);
-        }
 
-        System.out.println("GET INSURANCE "+ amount +" RECORDS: ");
-        for (long timeget: getTimes){
-            System.out.println(timeget);
-        }
+        String filename = "results_for_" + amount + "_insurance.txt";
 
-        System.out.println("UPDATE INSURANCE "+ amount +" RECORDS: ");
-        for (long timeSave: savingTimes){
-            System.out.println(timeSave);
-        }
+        try{
+            PrintWriter writer = new PrintWriter(filename, "UTF-8");
 
-        System.out.println("DELETE INSURANCE "+ amount +" RECORDS: ");
-        for (long timeSave: savingTimes){
-            System.out.println(timeSave);
+            System.out.println("SAVING INSURANCE "+ amount +" RECORDS: ");
+            writer.println("SAVING INSURANCE "+ amount +" RECORDS:");
+            for (long timeSave: savingTimes){
+                writer.println(timeSave);
+                System.out.println(timeSave);
+            }
+
+            System.out.println("GET INSURANCE "+ amount +" RECORDS: ");
+            writer.println("GET INSURANCE "+ amount +" RECORDS:");
+            for (long timeget: getTimes){
+                writer.println(timeget);
+                System.out.println(timeget);
+            }
+
+            System.out.println("UPDATE INSURANCE "+ amount +" RECORDS: ");
+            writer.println("UPDATE INSURANCE "+ amount +" RECORDS: ");
+            for (long timeSave: savingTimes){
+                writer.println(timeSave);
+                System.out.println(timeSave);
+            }
+
+            System.out.println("DELETE INSURANCE "+ amount +" RECORDS: ");
+            writer.println("DELETE INSURANCE "+ amount +" RECORDS: ");
+            for (long timeSave: savingTimes){
+                writer.println(timeSave);
+                System.out.println(timeSave);
+            }
+            writer.close();
+        }catch (Exception e) {
+            throw new RuntimeException(e);
         }
     }
 }

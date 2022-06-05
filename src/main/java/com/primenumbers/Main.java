@@ -106,7 +106,7 @@ public class Main {
     public void insurances() {
         InsurancesInvoker insurancesInvoker = new InsurancesInvoker();
         insurancesInvoker.insuranceTest(100);
-        //insurancesInvoker.insuranceTest(1000);
+        insurancesInvoker.insuranceTest(1000);
         //insurancesInvoker.insuranceTest(10000);
     }
 
