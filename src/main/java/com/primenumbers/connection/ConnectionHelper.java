@@ -19,7 +19,7 @@ public class ConnectionHelper {
     private final String TAG = "ConnectionHelper";
     public ConnectionHelper(){
         objectMapper = new ObjectMapper();
-        connectionBean = new ConnectionBean("http://127.0.0.1:8080/study");
+        connectionBean = new ConnectionBean("http://127.0.0.1:8000/study");
     }
 
 
@@ -32,7 +32,7 @@ public class ConnectionHelper {
     }
 
     public void saveAddresses(List<AddressDto> addressDtos) throws IOException {
-        connectionBean.postObjects(addressDtos, "/address/saveAdresses");
+        connectionBean.postObjects(addressDtos, "/address/saveAddresses");
     }
 
     public void saveBodyStyles(List<BodyStyleDto> bodyStyleDtos) throws IOException {
