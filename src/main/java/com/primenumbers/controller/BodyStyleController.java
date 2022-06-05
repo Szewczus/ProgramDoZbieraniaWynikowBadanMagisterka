@@ -2,12 +2,16 @@ package com.primenumbers.controller;
 
 import com.primenumbers.connection.ConnectionHelper;
 import com.primenumbers.dto.BodyStyleDto;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
 public class BodyStyleController {
+    private Logger log = LoggerFactory.getLogger(BodyStyleController.class);
+
     private List<BodyStyleDto> generate(){
         List<BodyStyleDto> bodyStyleDtos = new ArrayList<>();
         bodyStyleDtos.add(BodyStyleDto.builder().id(1L).style("Buggy").doorNumber(2).build());
@@ -32,6 +36,15 @@ public class BodyStyleController {
             connectionHelper.saveBodyStyles(generate());
         } catch (IOException e) {
             e.printStackTrace();
+        }
+    }
+
+    public void deleteAll(){
+        ConnectionHelper connectionHelper = new ConnectionHelper();
+        try {
+            connectionHelper.deleteAllBodyStyles();
+        } catch (IOException e) {
+            log.error(e.getMessage());
         }
     }
 

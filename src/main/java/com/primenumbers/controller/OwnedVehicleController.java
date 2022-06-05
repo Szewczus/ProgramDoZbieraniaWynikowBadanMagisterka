@@ -2,6 +2,8 @@ package com.primenumbers.controller;
 
 import com.primenumbers.connection.ConnectionHelper;
 import com.primenumbers.dto.OwnedVehicleDto;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.io.IOException;
 import java.sql.Date;
@@ -10,6 +12,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class OwnedVehicleController {
+    private Logger log = LoggerFactory.getLogger(OwnerController.class);
+
     private List<OwnedVehicleDto> generate() {
         List<OwnedVehicleDto> dtos = new ArrayList<>();
         dtos.add(OwnedVehicleDto.builder().id(1L).fkOwnerId(1L).fkVehicleId(1L).productionDate(Date.valueOf("2020-12-12")).fkBodyStyleId(1L).fkColourId(1L).build());
@@ -58,9 +62,20 @@ public class OwnedVehicleController {
     public void delete() {
         ConnectionHelper connectionHelper = new ConnectionHelper();
         try {
-            connectionHelper.deleteOwnedVehicles();
+            connectionHelper.deleteAllOwnedVehicles();
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
+
+    public String findAll() {
+        ConnectionHelper connectionHelper = new ConnectionHelper();
+        try {
+            return connectionHelper.findAllOwnedVehicles();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
 }

@@ -48,10 +48,8 @@ public class ConnectionBean {
     }
 
     public String deleteObjects(String postfix) throws IOException {
-        String deleteData = deleteData(postfix);
-        return deleteData;
+        return deleteData(postfix);
     }
-
 
 
     private String postData(String input, String postfix) throws IOException {
@@ -77,6 +75,17 @@ public class ConnectionBean {
         return "deleted";
     }
 
+    public String getData(String postfix) throws IOException {
+        HttpURLConnection connection = openConnectionGet(postfix);
+        sendData(connection, null);    //if input is either null of empty no data will be send to the backend
+        if (connection.getResponseCode() != 200) {
+            throw new RuntimeException("Failed : HTTP error code : "
+                    + connection.getResponseCode());
+        }
+        BufferedReader br = new BufferedReader(new InputStreamReader(connection.getInputStream()));
+        return readData(br);
+    }
+
     private HttpURLConnection openConnection(String postfix) throws IOException {
         URL address = new URL(serverAddress + postfix);
         HttpURLConnection conn = (HttpURLConnection) address.openConnection();
@@ -94,6 +103,18 @@ public class ConnectionBean {
         HttpURLConnection conn = (HttpURLConnection) address.openConnection();
         conn.setDoOutput(true);
         conn.setRequestMethod("DELETE");          //somehow android runtime sends all requests as POSTs even when request method is set to GET
+        conn.setRequestProperty("Content-Type", "application/json");
+        if(authHeader != null && !authHeader.isEmpty()){
+            conn.setRequestProperty("Authorization", authHeader);
+        }
+        return conn;
+    }
+
+    private HttpURLConnection openConnectionGet(String postfix) throws IOException {
+        URL address = new URL(serverAddress + postfix);
+        HttpURLConnection conn = (HttpURLConnection) address.openConnection();
+        conn.setDoOutput(true);
+        conn.setRequestMethod("GET");          //somehow android runtime sends all requests as POSTs even when request method is set to GET
         conn.setRequestProperty("Content-Type", "application/json");
         if(authHeader != null && !authHeader.isEmpty()){
             conn.setRequestProperty("Authorization", authHeader);

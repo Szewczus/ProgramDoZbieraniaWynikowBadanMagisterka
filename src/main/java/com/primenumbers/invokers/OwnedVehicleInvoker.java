@@ -29,6 +29,7 @@ public class OwnedVehicleInvoker {
 
         System.out.println("Save OwnedVehicle " + amount +" Records: ");
         List<Long> savingTimes = new ArrayList<>();
+        List<Long> getTimes = new ArrayList<>();
         List<Long> updateTimes = new ArrayList<>();
         List<Long> deletingTimes = new ArrayList<>();
 
@@ -44,12 +45,17 @@ public class OwnedVehicleInvoker {
             long updateEnd = System.currentTimeMillis();
             updateTimes.add(updateEnd-updateStart);
 
+            long getStart = System.currentTimeMillis();
+            ownedVehicleController.findAll();
+            long getEnd = System.currentTimeMillis();
+            getTimes.add(getEnd-getStart);
+
             long deleteStart = System.currentTimeMillis();
             ownedVehicleController.delete();
             long deleteEnd = System.currentTimeMillis();
             deletingTimes.add(deleteEnd-deleteStart);
 
-            System.out.println((i+1) + ": save: " + (saveEnd-saveStart) + ", update: " + (updateEnd-updateStart) + ", delete: " + (deleteEnd-deleteStart));
+            System.out.println((i+1) + ": save: " + (saveEnd-saveStart) +", get: " +(getEnd-getStart)+", update: " + (updateEnd-updateStart) + ", delete: " + (deleteEnd-deleteStart));
         }
 
         System.out.println("Save OwnedVehicle " + amount +" Records: ");
@@ -57,6 +63,12 @@ public class OwnedVehicleInvoker {
         for(long time : savingTimes) {
             System.out.println(time);
         }
+
+        System.out.println("GetTimes: ");
+        for(long time : getTimes) {
+            System.out.println(time);
+        }
+
         System.out.println("UpdateTimess: ");
         for(long time : updateTimes) {
             System.out.println(time);

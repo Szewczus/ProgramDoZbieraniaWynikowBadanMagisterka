@@ -14,25 +14,68 @@ import com.primenumbers.invokers.OwnedVehicleInvoker;
 
 public class Main {
 
+    private VehicleController vehicleController;
+    private ColourController colourController;
+    private BodyStyleController bodyStyleController;
+    private InsuranceTypeController insuranceTypeController;
+    private OwnerController ownerController;
+    private AddressController addressController;
+    private OwnedVehicleController ownedVehicleController;
+    private InsuranceController insuranceController;
+
+    public Main() {
+        vehicleController = new VehicleController();
+        colourController = new ColourController();
+        bodyStyleController = new BodyStyleController();
+        insuranceTypeController = new InsuranceTypeController();
+        ownerController = new OwnerController();
+        addressController = new AddressController();
+        ownedVehicleController = new OwnedVehicleController();
+        insuranceController = new InsuranceController();
+    }
+
     public static void main(String[] args) {
 
         Main main = new Main();
+
+        main.clearDatabase();
         main.fillDatabase();
         main.insurances();
         main.ownedVehicles();
 
     }
 
+    private void clearDatabase(){
+        System.out.println("CLEAR DATABASE");
+
+        System.out.println("Clear insurance...");
+        insuranceController.deleteAll();
+
+        System.out.println("Clear ownedVehicle...");
+        ownedVehicleController.delete();
+
+        System.out.println("Clear address...");
+        addressController.deleteAll();
+
+        System.out.println("Clear insuranceType...");
+        insuranceTypeController.deleteAll();
+
+        System.out.println("Clear owner...");
+        ownerController.deleteAll();
+
+        System.out.println("Clear vehicle...");
+        vehicleController.deleteAll();
+
+        System.out.println("Clear colour...");
+        colourController.deleteAll();
+
+        System.out.println("Clear bodyStyle...");
+        bodyStyleController.deleteAll();
+    }
+
     private void fillDatabase() {
-        System.out.println("Fill database");
-        VehicleController vehicleController = new VehicleController();
-        ColourController colourController = new ColourController();
-        BodyStyleController bodyStyleController = new BodyStyleController();
-        InsuranceTypeController insuranceTypeController = new InsuranceTypeController();
-        OwnerController ownerController = new OwnerController();
-        AddressController addressController = new AddressController();
-        OwnedVehicleController ownedVehicleController = new OwnedVehicleController();
-        InsuranceController insuranceController = new InsuranceController();
+        System.out.println("FILL DATABASE");
+
 
         System.out.println("Save vehicle...");
         vehicleController.save();
@@ -57,6 +100,7 @@ public class Main {
 
         System.out.println("Save insurance...");
         insuranceController.save(100);
+
     }
 
     public void insurances() {

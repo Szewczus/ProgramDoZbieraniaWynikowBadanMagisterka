@@ -12,6 +12,7 @@ public class InsurancesInvoker {
         insuranceController.deleteAll();
 
         List<Long> savingTimes = new ArrayList<>();
+        List<Long> getTimes = new ArrayList<>();
         List<Long> updateTimes = new ArrayList<>();
         List<Long> deletingTimes = new ArrayList<>();
 
@@ -26,11 +27,17 @@ public class InsurancesInvoker {
 
 
             long  updateStart = System.currentTimeMillis();
-            insuranceController.update(100, date);
+            insuranceController.update(amount, date);
             long updateEnd = System.currentTimeMillis();
             long resultUpdate = updateEnd-updateStart;
             updateTimes.add(resultUpdate);
             date = date.plusDays(10);
+
+            long getStart = System.currentTimeMillis();
+            insuranceController.findAll();
+            long getEnd = System.currentTimeMillis();
+            long resultGet = getEnd-getStart;
+            getTimes.add(resultGet);
 
 
             long deleteStart = System.currentTimeMillis();
@@ -39,11 +46,16 @@ public class InsurancesInvoker {
             long resultDelete = deleteEnd - deleteStart;
             deletingTimes.add(resultDelete);
 
-            System.out.println((i+1) + " Insurance "+ amount+" record - save: " + resultSave + ", update: " + resultUpdate + ", delete: " + resultDelete);
+            System.out.println((i+1) + " Insurance "+ amount+" record - save: " + resultSave +" get: "+ resultGet+", update: " + resultUpdate + ", delete: " + resultDelete);
         }
         System.out.println("SAVING INSURANCE "+ amount +" RECORDS: ");
         for (long timeSave: savingTimes){
             System.out.println(timeSave);
+        }
+
+        System.out.println("GET INSURANCE "+ amount +" RECORDS: ");
+        for (long timeget: getTimes){
+            System.out.println(timeget);
         }
 
         System.out.println("UPDATE INSURANCE "+ amount +" RECORDS: ");

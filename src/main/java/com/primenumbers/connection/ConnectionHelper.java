@@ -1,6 +1,5 @@
 package com.primenumbers.connection;
 
-import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.primenumbers.dto.*;
 import com.primenumbers.dto.AddressDto;
@@ -8,17 +7,11 @@ import com.primenumbers.dto.BodyStyleDto;
 import com.primenumbers.dto.InsuranceDto;
 import com.primenumbers.dto.OwnerDto;
 import com.primenumbers.dto.VehicleDto;
-import com.primenumbers.entity.Insurance;
-import com.primenumbers.entity.Owner;
 
 import java.io.IOException;
 import java.sql.Date;
 import java.time.LocalDate;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.HashMap;
 import java.util.List;
-import java.util.zip.InflaterOutputStream;
 
 public class ConnectionHelper {
     private final ObjectMapper objectMapper;
@@ -66,8 +59,40 @@ public class ConnectionHelper {
         connectionBean.postObject(null, "/ownedvehicles/updateOwnedVehicles/11/11/1/" + amount);
     }
 
-    public void deleteOwnedVehicles() throws IOException {
+    public void deleteAllInsurances() throws IOException {
+        connectionBean.deleteObjects("/insurance/deleteAll");
+    }
+
+    public void deleteAllInsuranceTypes() throws IOException {
+        connectionBean.deleteObjects("/insurancetype/deleteAll");
+    }
+
+    public void deleteAllOwners() throws IOException {
+        connectionBean.deleteObjects("/owners/deleteAll");
+    }
+
+    public void deleteAllAddresses() throws IOException {
+        connectionBean.deleteObjects("/address/deleteAll");
+    }
+
+    public void deleteAllBodyStyles() throws IOException{
+        connectionBean.deleteObjects("/bodystyle/deleteAll");
+    }
+
+    public void deleteAllOwnedVehicles() throws IOException {
         connectionBean.deleteObjects("/ownedvehicles/deleteAll");
+    }
+
+    public void deleteAllColours() throws IOException{
+        connectionBean.deleteObjects("/colour/deleteAll");
+    }
+
+    public void deleteAllVehicles() throws IOException{
+        connectionBean.deleteObjects("/vehicles/deleteAll");
+    }
+
+    public String findAllOwnedVehicles() throws IOException{
+        return connectionBean.getData("/ownedvehicles/get");
     }
 
     public void updateInsurances(int amount, LocalDate nextDate) throws IOException{
@@ -77,8 +102,8 @@ public class ConnectionHelper {
         connectionBean.postObject(insuranceDto, "/insurance/updateInsurance/1/"+ amount);
     }
 
-    public void deleteAll() throws IOException{
-        connectionBean.deleteObjects("/insurance/deleteAllInsurances");
+    public String findAll() throws IOException{
+        return connectionBean.getData("/insurance/get");
     }
 
 }

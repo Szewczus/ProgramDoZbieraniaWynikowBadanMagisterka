@@ -2,12 +2,16 @@ package com.primenumbers.controller;
 
 import com.primenumbers.connection.ConnectionHelper;
 import com.primenumbers.dto.AddressDto;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
 public class AddressController {
+    private Logger log = LoggerFactory.getLogger(AddressController.class);
+
     private List<AddressDto> generate() {
         List<AddressDto> dtos = new ArrayList<>();
         dtos.add(AddressDto.builder().id(1L).postalCode("00-001").city("Warszawa").street("al. Aleja 3 Maja").houseNumber(5).fkOwnerId(1L).build());
@@ -32,6 +36,15 @@ public class AddressController {
             connectionHelper.saveAddresses(generate());
         } catch (IOException e) {
             e.printStackTrace();
+        }
+    }
+
+    public void deleteAll(){
+        ConnectionHelper connectionHelper = new ConnectionHelper();
+        try {
+            connectionHelper.deleteAllAddresses();
+        } catch (IOException e) {
+            log.error(e.getMessage());
         }
     }
 
