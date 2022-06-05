@@ -3,6 +3,8 @@ package com.primenumbers.controller;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.primenumbers.connection.ConnectionHelper;
 import com.primenumbers.dto.OwnerDto;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.io.IOException;
 import java.sql.Date;
@@ -10,6 +12,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class OwnerController {
+    private Logger log = LoggerFactory.getLogger(OwnerController.class);
+
     private List<OwnerDto> generate() {
         List<OwnerDto> dtos = new ArrayList<>();
         dtos.add(OwnerDto.builder().id(1L).name("Feliks").surname("Olszewski").birthdate(Date.valueOf("1948-02-16")).pesel(48021667475L).build());
@@ -32,6 +36,15 @@ public class OwnerController {
             connectionHelper.saveOwners(generate());
         } catch (IOException e) {
             e.printStackTrace();
+        }
+    }
+
+    public void deleteAll(){
+        ConnectionHelper connectionHelper = new ConnectionHelper();
+        try {
+            connectionHelper.deleteAllOwners();
+        } catch (IOException e) {
+            log.error(e.getMessage());
         }
     }
 }

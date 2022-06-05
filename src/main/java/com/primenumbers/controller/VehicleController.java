@@ -2,19 +2,32 @@ package com.primenumbers.controller;
 
 import com.primenumbers.connection.ConnectionHelper;
 import com.primenumbers.dto.VehicleDto;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
 public class VehicleController {
+    private Logger log = LoggerFactory.getLogger(VehicleController.class);
 
     public void save(){
         ConnectionHelper connectionHelper = new ConnectionHelper();
         try {
             connectionHelper.saveVehicles(generate());
         } catch (IOException e) {
-            e.printStackTrace();
+            log.error(e.getMessage());
+        }
+    }
+
+    public void deleteAll(){
+        ConnectionHelper connectionHelper = new ConnectionHelper();
+        try {
+            connectionHelper.deleteAllVehicles();
+        }
+        catch (IOException e){
+            log.error(e.getMessage());
         }
     }
 

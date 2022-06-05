@@ -13,6 +13,7 @@ import java.util.List;
 
 public class InsuranceController {
     private Logger log = LoggerFactory.getLogger(InsuranceController.class);
+
     public void save(int amount){
         ConnectionHelper connectionHelper = new ConnectionHelper();
         try {
@@ -35,7 +36,7 @@ public class InsuranceController {
     public void deleteAll(){
         ConnectionHelper connectionHelper = new ConnectionHelper();
         try{
-            connectionHelper.deleteAll();
+            connectionHelper.deleteAllInsurances();
         }
         catch (Exception e){
             log.error(e.getMessage());
