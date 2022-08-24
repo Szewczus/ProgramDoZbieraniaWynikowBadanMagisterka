@@ -31,6 +31,7 @@ public class OwnedVehicleInvoker {
         System.out.println("Save OwnedVehicle " + amount +" Records: ");
         List<Long> savingTimes = new ArrayList<>();
         List<Long> getTimes = new ArrayList<>();
+        List<Long> selectWithJoinTimes = new ArrayList<>();
         List<Long> updateTimes = new ArrayList<>();
         List<Long> deletingTimes = new ArrayList<>();
 
@@ -51,12 +52,17 @@ public class OwnedVehicleInvoker {
             long getEnd = System.currentTimeMillis();
             getTimes.add(getEnd-getStart);
 
+            long selectWithJoinStart = System.currentTimeMillis();
+            ownedVehicleController.selectWithJoin();
+            long selectWithJoinEnd = System.currentTimeMillis();
+            selectWithJoinTimes.add(selectWithJoinEnd-selectWithJoinStart);
+
             long deleteStart = System.currentTimeMillis();
             ownedVehicleController.delete();
             long deleteEnd = System.currentTimeMillis();
             deletingTimes.add(deleteEnd-deleteStart);
 
-            System.out.println((i+1) + ": save: " + (saveEnd-saveStart) +", get: " +(getEnd-getStart)+", update: " + (updateEnd-updateStart) + ", delete: " + (deleteEnd-deleteStart));
+            System.out.println((i+1) + ": save: " + (saveEnd-saveStart) +", get: " +(getEnd-getStart)+", selectWithJoin: " +(selectWithJoinEnd-selectWithJoinStart)+", update: " + (updateEnd-updateStart) + ", delete: " + (deleteEnd-deleteStart));
         }
 
         //write to file
@@ -78,6 +84,13 @@ public class OwnedVehicleInvoker {
             System.out.println("GetTimes: ");
             writer.println("GetTimes: ");
             for(long time : getTimes) {
+                System.out.println(time);
+                writer.println(time);
+            }
+
+            System.out.println("Select with join: ");
+            writer.println("SelectWithJoinTimes: ");
+            for(long time : selectWithJoinTimes) {
                 System.out.println(time);
                 writer.println(time);
             }

@@ -78,4 +78,15 @@ public class OwnedVehicleController {
         return null;
     }
 
+    public String selectWithJoin(){
+        ConnectionHelper connectionHelper = new ConnectionHelper();
+        try {
+            return connectionHelper.selectWithJoin();
+        }
+        catch (IOException e){
+            log.error("[selectWithJoin] "+ e.getMessage(),e);
+        }
+        return null;
+    }
+
 }

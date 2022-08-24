@@ -19,7 +19,8 @@ public class ConnectionHelper {
     private final String TAG = "ConnectionHelper";
     public ConnectionHelper(){
         objectMapper = new ObjectMapper();
-        connectionBean = new ConnectionBean("http://127.0.0.1:8000/study");
+        connectionBean = new ConnectionBean("http://127.0.0.1:8080/study");
+        //connectionBean = new ConnectionBean("http://127.0.0.1:8000/study");
     }
 
 
@@ -104,6 +105,10 @@ public class ConnectionHelper {
 
     public String findAll() throws IOException{
         return connectionBean.getData("/insurance/get");
+    }
+
+    public String selectWithJoin() throws IOException {
+        return connectionBean.getData("/ownedvehicles/selectWithJoin");
     }
 
 }

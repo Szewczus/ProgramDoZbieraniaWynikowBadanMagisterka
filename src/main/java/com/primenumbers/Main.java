@@ -40,8 +40,9 @@ public class Main {
 
         main.clearDatabase();
         main.fillDatabase();
-        main.insurances();
+        //main.insurances();
         main.ownedVehicles();
+
 
     }
 
@@ -107,7 +108,7 @@ public class Main {
         InsurancesInvoker insurancesInvoker = new InsurancesInvoker();
         insurancesInvoker.insuranceTest(100);
         insurancesInvoker.insuranceTest(1000);
-        //insurancesInvoker.insuranceTest(10000);
+        insurancesInvoker.insuranceTest(10000);
     }
 
 
@@ -115,8 +116,8 @@ public class Main {
         System.out.println("--------------");
         OwnedVehicleInvoker ownedVehicleInvoker = new OwnedVehicleInvoker();
         ownedVehicleInvoker.saveOwnedVehicles100();
-        //ownedVehicleInvoker.saveOwnedVehicles1000();
-        //ownedVehicleInvoker.saveOwnedVehicles10000();
+        ownedVehicleInvoker.saveOwnedVehicles1000();
+        ownedVehicleInvoker.saveOwnedVehicles10000();
 
     }
 
