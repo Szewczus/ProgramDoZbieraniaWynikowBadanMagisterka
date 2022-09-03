@@ -74,14 +74,14 @@ public class InsurancesInvoker {
 
             System.out.println("UPDATE INSURANCE "+ amount +" RECORDS: ");
             writer.println("UPDATE INSURANCE "+ amount +" RECORDS: ");
-            for (long timeSave: savingTimes){
+            for (long timeSave: updateTimes){
                 writer.println(timeSave);
                 System.out.println(timeSave);
             }
 
             System.out.println("DELETE INSURANCE "+ amount +" RECORDS: ");
             writer.println("DELETE INSURANCE "+ amount +" RECORDS: ");
-            for (long timeSave: savingTimes){
+            for (long timeSave: deletingTimes){
                 writer.println(timeSave);
                 System.out.println(timeSave);
             }

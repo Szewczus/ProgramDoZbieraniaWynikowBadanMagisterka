@@ -1,0 +1,27 @@
+
+V	java:S125*"<This block of commented-out lines of code should be removed.(ÅßèÁşÿÿÿÿ
+N	java:S1062"9Replace this use of System.out or System.err by a logger.(Û¾—
+S	java:S1066"9Replace this use of System.out or System.err by a logger.(ä«ç¶üÿÿÿÿ
+S	java:S106;"9Replace this use of System.out or System.err by a logger.(…†ÿÓşÿÿÿÿ
+M	java:S106@"9Replace this use of System.out or System.err by a logger.(¿¼€G
+S	java:S106E"9Replace this use of System.out or System.err by a logger.(ÇüÍµûÿÿÿÿ
+N	java:S106J"9Replace this use of System.out or System.err by a logger.(…÷ÿ
+N	java:S106O"9Replace this use of System.out or System.err by a logger.(ÙÑŒ
+S	java:S106T"9Replace this use of System.out or System.err by a logger.(÷±¶üÿÿÿÿ
+S	java:S106Y"9Replace this use of System.out or System.err by a logger.(‹«†£ûÿÿÿÿ
+S	java:S106`"9Replace this use of System.out or System.err by a logger.(§Ã¨Åÿÿÿÿÿ
+N	java:S106d"9Replace this use of System.out or System.err by a logger.(€ºÃö
+S	java:S106i"9Replace this use of System.out or System.err by a logger.(Ê²‘§üÿÿÿÿ
+N	java:S106n"9Replace this use of System.out or System.err by a logger.(ÀÈÑÕ
+S	java:S106s"9Replace this use of System.out or System.err by a logger.(¸ä‚Şıÿÿÿÿ
+S	java:S106x"9Replace this use of System.out or System.err by a logger.(ÒÔ²µøÿÿÿÿ
+N	java:S106}"9Replace this use of System.out or System.err by a logger.(Ö€ú¿
+O	java:S106‚"9Replace this use of System.out or System.err by a logger.(ÓÉ€
+T	java:S106‡"9Replace this use of System.out or System.err by a logger.(£«€½ûÿÿÿÿ
+T	java:S106–"9Replace this use of System.out or System.err by a logger.(†·§ÿÿÿÿÿ
+_
+java:S1128"IRemove this unused import 'com.primenumbers.connection.ConnectionHelper'.(Í€Ã
+Y
+java:S1128">Remove this unused import 'com.primenumbers.dto.InsuranceDto'.(ğğ‚ıÿÿÿÿ
+W
+java:S1128	"<Remove this unused import 'com.primenumbers.dto.VehicleDto'.(€ôÂˆıÿÿÿÿ

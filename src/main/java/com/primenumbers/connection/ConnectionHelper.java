@@ -19,10 +19,9 @@ public class ConnectionHelper {
     private final String TAG = "ConnectionHelper";
     public ConnectionHelper(){
         objectMapper = new ObjectMapper();
-        connectionBean = new ConnectionBean("http://127.0.0.1:8080/study");
-        //connectionBean = new ConnectionBean("http://127.0.0.1:8000/study");
+        //connectionBean = new ConnectionBean("http://127.0.0.1:8080/study");
+        connectionBean = new ConnectionBean("http://127.0.0.1:8000/study");
     }
-
 
     public void saveInsurances(List<InsuranceDto> insurances) throws IOException {
         connectionBean.postObjects(insurances, "/insurance/saveInsurances");

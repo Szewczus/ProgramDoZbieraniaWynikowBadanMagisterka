@@ -1,5 +1,6 @@
 package com.primenumbers.invokers;
 
+import com.primenumbers.Main;
 import com.primenumbers.controller.OwnedVehicleController;
 
 import java.io.*;
@@ -12,19 +13,32 @@ public class OwnedVehicleInvoker {
     }
 
     public void saveOwnedVehicles100() {
-        ownedVehicleTest(100);
+        try {
+            ownedVehicleTest(100);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     public void saveOwnedVehicles1000() {
-        ownedVehicleTest(1000);
+        try {
+            ownedVehicleTest(1000);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     public void saveOwnedVehicles10000() {
-        ownedVehicleTest(10000);
+        try {
+            ownedVehicleTest(10000);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
     }
 
 
-    private void ownedVehicleTest(int amount){
+    private void ownedVehicleTest(int amount) throws InterruptedException {
         OwnedVehicleController ownedVehicleController = new OwnedVehicleController();
         ownedVehicleController.delete(); //by najpierw wyczyscic tabelę
 
@@ -37,30 +51,49 @@ public class OwnedVehicleInvoker {
 
         for(int i = 0; i<50; i++) {
 
-            long saveStart = System.currentTimeMillis();
-            ownedVehicleController.save(amount);
-            long saveEnd = System.currentTimeMillis();
-            savingTimes.add(saveEnd-saveStart);
+            Main main = new Main();
+            main.fillDatabase(false);
 
-            long updateStart = System.currentTimeMillis();
-            ownedVehicleController.update(amount);
-            long updateEnd = System.currentTimeMillis();
-            updateTimes.add(updateEnd-updateStart);
-
-            long getStart = System.currentTimeMillis();
-            ownedVehicleController.findAll();
-            long getEnd = System.currentTimeMillis();
-            getTimes.add(getEnd-getStart);
+            Thread.sleep(1000);
 
             long selectWithJoinStart = System.currentTimeMillis();
             ownedVehicleController.selectWithJoin();
             long selectWithJoinEnd = System.currentTimeMillis();
             selectWithJoinTimes.add(selectWithJoinEnd-selectWithJoinStart);
 
+            Thread.sleep(1000);
+
+            long updateStart = System.currentTimeMillis();
+            ownedVehicleController.update(amount);
+            long updateEnd = System.currentTimeMillis();
+            updateTimes.add(updateEnd-updateStart);
+
+            Thread.sleep(1000);
+
+            long getStart = System.currentTimeMillis();
+            ownedVehicleController.findAll();
+            long getEnd = System.currentTimeMillis();
+            getTimes.add(getEnd-getStart);
+
+            Thread.sleep(1000);
+
             long deleteStart = System.currentTimeMillis();
             ownedVehicleController.delete();
             long deleteEnd = System.currentTimeMillis();
             deletingTimes.add(deleteEnd-deleteStart);
+
+            Thread.sleep(1000);
+
+            long saveStart = System.currentTimeMillis();
+            ownedVehicleController.save(amount);
+            long saveEnd = System.currentTimeMillis();
+            savingTimes.add(saveEnd-saveStart);
+
+            Thread.sleep(1000);
+
+            main.clearDatabase(false);
+
+            Thread.sleep(1000);
 
             System.out.println((i+1) + ": save: " + (saveEnd-saveStart) +", get: " +(getEnd-getStart)+", selectWithJoin: " +(selectWithJoinEnd-selectWithJoinStart)+", update: " + (updateEnd-updateStart) + ", delete: " + (deleteEnd-deleteStart));
         }

@@ -38,68 +38,102 @@ public class Main {
 
         Main main = new Main();
 
-        main.clearDatabase();
-        main.fillDatabase();
+        main.clearDatabase(true);
+        //main.fillDatabase();
         //main.insurances();
         main.ownedVehicles();
 
-
     }
 
-    private void clearDatabase(){
-        System.out.println("CLEAR DATABASE");
+    public void clearDatabase(boolean showLogs){
+        if(showLogs){
+            System.out.println("CLEAR DATABASE");
+        }
 
-        System.out.println("Clear insurance...");
+        if(showLogs){
+            System.out.println("Clear insurance...");
+        }
         insuranceController.deleteAll();
 
-        System.out.println("Clear ownedVehicle...");
+        if(showLogs){
+            System.out.println("Clear ownedVehicle...");
+        }
         ownedVehicleController.delete();
 
-        System.out.println("Clear address...");
+        if(showLogs){
+            System.out.println("Clear address...");
+        }
         addressController.deleteAll();
 
-        System.out.println("Clear insuranceType...");
+        if(showLogs){
+            System.out.println("Clear insuranceType...");
+        }
         insuranceTypeController.deleteAll();
 
-        System.out.println("Clear owner...");
+        if(showLogs){
+            System.out.println("Clear owner...");
+        }
         ownerController.deleteAll();
 
-        System.out.println("Clear vehicle...");
+        if(showLogs){
+            System.out.println("Clear vehicle...");
+        }
         vehicleController.deleteAll();
 
-        System.out.println("Clear colour...");
+        if(showLogs){
+            System.out.println("Clear colour...");
+        }
         colourController.deleteAll();
 
-        System.out.println("Clear bodyStyle...");
+        if(showLogs){
+            System.out.println("Clear bodyStyle...");
+        }
         bodyStyleController.deleteAll();
     }
 
-    private void fillDatabase() {
-        System.out.println("FILL DATABASE");
+    public void fillDatabase(boolean showLogs) {
+        if(showLogs){
+            System.out.println("FILL DATABASE");
+        }
 
-
-        System.out.println("Save vehicle...");
+        if (showLogs){
+            System.out.println("Save vehicle...");
+        }
         vehicleController.save();
 
-        System.out.println("Save colour...");
+        if(showLogs){
+            System.out.println("Save colour...");
+        }
         colourController.save();
 
-        System.out.println("Save bodyStyle...");
+        if(showLogs){
+            System.out.println("Save bodyStyle...");
+        }
         bodyStyleController.save();
 
-        System.out.println("Save insuranceType...");
+        if(showLogs){
+            System.out.println("Save insuranceType...");
+        }
         insuranceTypeController.save();
 
-        System.out.println("Save owner...");
+        if(showLogs){
+            System.out.println("Save owner...");
+        }
         ownerController.save();
 
-        System.out.println("Save address...");
+        if(showLogs){
+            System.out.println("Save address...");
+        }
         addressController.save();
 
-        System.out.println("Save ownedVehicle...");
+        if(showLogs){
+            System.out.println("Save ownedVehicle...");
+        }
         ownedVehicleController.save(100);
 
-        System.out.println("Save insurance...");
+        if(showLogs){
+            System.out.println("Save insurance...");
+        }
         insuranceController.save(100);
 
     }

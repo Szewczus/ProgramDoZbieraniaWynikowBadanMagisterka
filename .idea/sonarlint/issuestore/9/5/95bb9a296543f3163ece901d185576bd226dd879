@@ -1,0 +1,20 @@
+
+Z	java:S112;"FDefine and throw a dedicated exception instead of using a generic one.(õú¹
+Z	java:S112H"FDefine and throw a dedicated exception instead of using a generic one.(õú¹
+Z	java:S112R"FDefine and throw a dedicated exception instead of using a generic one.(õú¹
+l
+java:S1192^"QDefine a constant instead of duplicating this literal "application/json" 3 times.(­†õÊþÿÿÿÿ
+i
+java:S1192`"NDefine a constant instead of duplicating this literal "Authorization" 4 times.(Ã±¼½ûÿÿÿÿ
+q
+java:S1192;"\Define a constant instead of duplicating this literal "Failed : HTTP error code : " 3 times.(õú¹
+h
+java:S1192^"MDefine a constant instead of duplicating this literal "Content-Type" 4 times.(­†õÊþÿÿÿÿ
+T
+java:S1128">Remove this unused import 'java.nio.charset.StandardCharsets'.(ï˜ÞÛ
+I
+java:S1128".Remove this unused import 'java.util.HashMap'.(™˜”€ùÿÿÿÿ
+E
+java:S1128"*Remove this unused import 'java.util.Map'.(¼è½Òþÿÿÿÿ
+I
+java:S1144}"3Remove this unused private "openConnection" method.(ØúŸä
